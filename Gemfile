@@ -9,6 +9,7 @@ group :development, :test do
   gem 'spring'  
   gem 'byebug'
   gem 'factory_girl_rails'
+  gem 'sqlite3'
   gem 'rspec-rails', '~> 3.0'
   gem 'simplecov', :require => false
   gem 'coveralls', :require => false
