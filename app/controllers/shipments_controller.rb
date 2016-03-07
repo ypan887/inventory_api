@@ -25,9 +25,19 @@ class ShipmentsController < ApplicationController
     head 204
   end
 
+  def index
+    shipments = Shipment.all
+    render json: shipments
+  end
+
+  def show
+    shipment = Shipment.find(params[:id])
+    render json: shipment
+  end
+
 private
   def shipment_params
-    params.permit(:id, :tracking_number, :ship_date, :ship_cost)
+    params.permit(:id, :tracking_number, :ship_date, :ship_cost, :shipment_details_attributes => [:quantity, :id, :shipment_id, :product_id, :deliver_check, :_destroy])
   end
 
 end
