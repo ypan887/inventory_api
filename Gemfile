@@ -13,6 +13,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'simplecov', :require => false
   gem 'coveralls', :require => false
+  gem 'pry'
 end
 
 group :production do

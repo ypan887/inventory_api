@@ -39,13 +39,17 @@ describe 'orders', type: :request do
   describe 'create' do
     before :each do
       @customer = FactoryGirl.create(:customer)
+      @product = FactoryGirl.create(:product)
     end
 
-    it 'should create order for the customer with order date' do
-      post "/customers/#{@customer.id}/orders", { order_date: DateTime.now }, format: :json
+    it 'should create order for the customer with order date and order detail' do
+      post "/customers/#{@customer.id}/orders", { order_date: DateTime.now, :order_details_attributes => [{ :quantity => 1, :product_id => @product.id }] }, format: :json
       expect(response.status).to eq(201)
       body = json_response
       expect(body['data']['attributes']["order_date"]).to eq(DateTime.now.strftime("%Y-%m-%d"))
+      expect(body['data']['relationships']["order_details"]['data'][0]["quantity"]).to eq(1)
+      expect(body['data']['relationships']["order_details"]['data'][0]["order_id"]).to eq(Order.last.id)
+      expect(body['data']['relationships']["order_details"]['data'][0]["product_id"]).to eq(@product.id)
     end
 
     it 'should not create order without order date' do
@@ -56,13 +60,17 @@ describe 'orders', type: :request do
 
   describe 'update' do
     let(:order) { FactoryGirl.create(:order) }
+    let(:product) { FactoryGirl.create(:product) }
 
     it "should update order with valid data" do
-      patch "/orders/#{order.id}", order_date: DateTime.now, format: :json
+      patch "/orders/#{order.id}", { order_date: DateTime.now, :order_details_attributes => [{ :quantity => 3, :product_id => product.id }] }, format: :json
       expect(response.status).to eq(200)
       order.reload
       body = json_response
       expect(body['data']['attributes']['order_date']).to eq(DateTime.now.strftime("%Y-%m-%d"))
+      expect(body['data']['relationships']["order_details"]['data'][0]["quantity"]).to eq(3)
+      expect(body['data']['relationships']["order_details"]['data'][0]["order_id"]).to eq(Order.last.id)
+      expect(body['data']['relationships']["order_details"]['data'][0]["product_id"]).to eq(product.id)
     end
 
     it "should not update order with empty order_date" do
