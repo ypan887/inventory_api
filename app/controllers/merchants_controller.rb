@@ -25,6 +25,16 @@ class MerchantsController < ApplicationController
     head 204
   end
 
+  def show
+    merchant = Merchant.find(params[:id])
+    render json: merchant
+  end
+
+  def index
+    merchants = Merchant.all
+    render json: merchants
+  end
+
 private
   def merchant_params
     params.permit(:id, :name)

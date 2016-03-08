@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307093343) do
+ActiveRecord::Schema.define(version: 20160308234223) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -90,20 +90,23 @@ ActiveRecord::Schema.define(version: 20160307093343) do
 
   create_table "supplies", force: :cascade do |t|
     t.date     "order_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "merchant_id"
   end
+
+  add_index "supplies", ["merchant_id"], name: "index_supplies_on_merchant_id"
 
   create_table "supply_details", force: :cascade do |t|
     t.integer  "quantity"
-    t.integer  "supplies_id"
-    t.integer  "products_id"
+    t.integer  "supply_id"
+    t.integer  "product_id"
     t.boolean  "deliver_check", default: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
 
-  add_index "supply_details", ["products_id"], name: "index_supply_details_on_products_id"
-  add_index "supply_details", ["supplies_id"], name: "index_supply_details_on_supplies_id"
+  add_index "supply_details", ["product_id"], name: "index_supply_details_on_product_id"
+  add_index "supply_details", ["supply_id"], name: "index_supply_details_on_supply_id"
 
 end
