@@ -1,6 +1,39 @@
 require 'rails_helper'
 
 describe 'merchants', type: :request do
+  describe "index" do
+    before :each do
+      merchants = FactoryGirl.create_list(:merchant, 2)
+      get "/merchants"
+    end
+
+    it 'should have an endpoint' do
+      expect(response).to be_success
+    end
+
+    it 'should return an array of merchants' do
+      body = json_response
+      expect(body['data'].length).to eq(2)
+    end
+  end
+
+  describe 'show' do
+    let(:merchant) { FactoryGirl.create(:merchant)}
+
+    before :each do
+      get "/merchants/#{merchant.id}"
+    end
+
+    it 'should have an endpoint' do
+      expect(response).to be_success
+    end
+
+    it 'should return the correct merchant' do
+      body = json_response
+      expect(body['data']['id'].to_i).to eq(merchant.id)
+    end
+  end
+
   describe 'create' do
     it 'should create merchant with name' do
       post '/merchants', { name: "apple" }, format: :json
