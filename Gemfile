@@ -5,6 +5,11 @@ ruby "2.3.0"
 gem 'rails', '4.2.5'
 gem "active_model_serializers", github: "rails-api/active_model_serializers"
 
+
+group :development do
+  gem 'pry-rails'
+end
+
 group :development, :test do
   gem 'spring'  
   gem 'byebug'
@@ -16,6 +21,3 @@ group :development, :test do
   gem 'pry'
 end
 
-group :production do
-  gem 'pg'
-end

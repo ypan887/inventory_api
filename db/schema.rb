@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308234223) do
+ActiveRecord::Schema.define(version: 20160311070402) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 20160308234223) do
     t.float    "ship_cost"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "statements", force: :cascade do |t|
+    t.float    "profit",        default: 0.0
+    t.float    "income",        default: 0.0
+    t.float    "shipping_cost", default: 0.0
+    t.float    "product_cost",  default: 0.0
+    t.string   "year_month"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "supplies", force: :cascade do |t|

@@ -1,4 +1,4 @@
 class SupplyDetail < ActiveRecord::Base
-  belongs_to :supplies
-  belongs_to :products
+  belongs_to :supply
+  belongs_to :product
 end

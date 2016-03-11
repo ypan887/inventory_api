@@ -9,4 +9,6 @@ class Product < ActiveRecord::Base
   validates :price, presence: true
   validates :cost, presence: true
   validates :name, presence: true
+
+  # Item supply
 end

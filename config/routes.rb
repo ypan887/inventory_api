@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :statements, only: [:index]
   resources :shipments, only: [:index, :show, :create, :update, :destroy]
 
   resources :categories, only: [:create, :update, :destroy] do
