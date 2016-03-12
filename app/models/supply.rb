@@ -3,7 +3,6 @@ class Supply < ActiveRecord::Base
   has_many :supply_details
   has_many :products, :through => :supply_details
   accepts_nested_attributes_for :supply_details, reject_if: :all_blank, allow_destroy: true
-
   validates :order_date, presence: true
 
   after_save :create_or_update_cost_of_goods_this_month

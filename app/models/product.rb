@@ -28,6 +28,6 @@ class Product < ActiveRecord::Base
       new_income = Order.monthly_income_of_goods(time.first, time.last)     
       s.update( income: new_income)
       s.update( profit: s.total_monthly_profit)
-    end
+    end if self.price_changed?
   end
 end
