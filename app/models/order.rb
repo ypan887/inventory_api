@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
 
   def self.monthly_income_of_goods(year, month)
     month = sprintf '%02d', (1..12) === month.to_i ? month : Date::MONTHNAMES.index(month.capitalize)
-    current_month_sales = Order.where("strftime('%y%m', order_date) = ?", year.to_s + month).joins(:order_details, :products).uniq
+    current_month_sales = Order.where("strftime('%Y%m', order_date) = ?", year.to_s + month).joins(:order_details, :products).uniq
     current_month_sales.inject(0) do |sum, hash|
       h1 = hash.order_details.pluck(:product_id, :quantity).to_h
       h2 = hash.products.pluck(:id, :price).to_h
@@ -21,11 +21,10 @@ class Order < ActiveRecord::Base
   end
 
   def create_or_update_income_of_goods_this_month
-    time = self.order_date.strftime('%y-%m')
+    time = self.order_date.strftime('%Y-%m')
     year_month = time.split('-')
     new_income = Order.monthly_income_of_goods(year_month.first, year_month.last)
     statement = Statement.where(year_month: time).first_or_create
-    statement.income = new_income
-    statement.profit = statement.total_monthly_profit
+    statement.update( income: new_income, profit: statement.total_monthly_profit)
   end
 end
