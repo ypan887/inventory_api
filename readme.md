@@ -1,11 +1,8 @@
 # Inventory Management Api
 
-This api is built for Inventory Management App V3. 
+I am building a tool for my wife who is in need of an easy-to-use solution for managing her small oversea trading business.
 
-The first two inventoy managment apps are regular rails app. I was inspired by a group project that I was working on recently, and I wanted to seprate the inventory managment app into an api and a front-end app. 
-
-I am building this app becasue my girl need a easy to use solution for her small oversea trading business.
-
+This is solution version 3.0 and it will have two parts, an inventory api and a front end app to cosume that api. This new setup was inspired by a group project that I was currently working on. I am aiming for a better overall performance than the previous version.
 
 ## Installation
 
@@ -23,27 +20,27 @@ This api serves as a tool to keep an record on the products inventory. That incl
 
 If you choose to seed the database, you can start explore the api
 
-### checkout categories and the products
+#### view categories and the products
 ```
 curl localhost:3000/categoris
 curl localhost:3000/category/1/products
 ```
 
-### checkout customers, and their orders
+#### view customers, and their orders
 
 ```
 curl localhost:3000/customers
 curl localhost:3000/customer/1/orders
 ```
 
-### checkout supplier merchants, and their supply records
+### view supplier merchants, and their supply records
 ```
 curl localhost:3000/merchants
 curl localhost:3000/merchant/1/supplies
 ```
 
-### checkout monthly statement. 
-Statement will be updated whenever any relative sales information has changed on that paticular month. For example, if a orders record on Apr 12 2016 has changed, the income statement for that month will be recalculated and updated. If the price or cost of a product has changed, every monthly statements that happens after the created date of the product will be updated as well.
+### view monthly statement. 
+Statement will be updated whenever the relative sales information for that month was changed. For example, if quantity of items in an order made on Apr-12-2016 has changed, the income statement for that month will be recalculated and updated number will be saved. If the price or cost of a product has changed, every monthly statements that happens after the created date of the product will be updated as well.
 
 ```
 curl localhost:3000/statements
