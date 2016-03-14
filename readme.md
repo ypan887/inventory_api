@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ypan887/inventoy_api.svg?branch=master)](https://travis-ci.org/ypan887/inventoy_api)
+
 # Inventory Management Api
 
 I am building a tool for my wife who is in need of an easy-to-use solution for managing her small oversea trading business.
