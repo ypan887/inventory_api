@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:ypan887/inventory_api.git'
 
 set :deploy_to, '/home/deploy/inventory_api'
 
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :deploy do
