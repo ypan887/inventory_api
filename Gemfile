@@ -11,6 +11,7 @@ gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
+gem 'sqlite3'
 
 group :development do
   gem 'pry-rails'
@@ -20,14 +21,9 @@ group :development, :test do
   gem 'spring'  
   gem 'byebug'
   gem 'factory_girl_rails'
-  gem 'sqlite3'
   gem 'rspec-rails', '~> 3.0'
   gem 'simplecov', :require => false
   gem 'coveralls', :require => false
   gem 'pry'
-end
-
-group :production do
-  gem 'pg'
 end
 
