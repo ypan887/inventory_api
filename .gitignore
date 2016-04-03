@@ -6,3 +6,4 @@
 /tmp
 
 .coveralls.yml
+secrets.yml
