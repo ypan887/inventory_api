@@ -13,7 +13,7 @@ This is solution version 3.0 and it will have two parts, an inventory api and a 
 bundle install
 bundle exec rake db:create
 bundle exec rake db:migrate
-bundle exec rake db:seed  # Only if you want to play around with seeded data to see how everything is working in this api
+bundle exec rake db:setup  # Only if you want to play around with seeded data to see how everything is working in this api
 rails s
 ```
 
@@ -34,13 +34,13 @@ curl localhost:3000/category/1/products
 
 ```
 curl localhost:3000/customers
-curl localhost:3000/customer/1/orders
+curl localhost:3000/customers/1/orders
 ```
 
 ### view supplier merchants, and their supply records
 ```
 curl localhost:3000/merchants
-curl localhost:3000/merchant/1/supplies
+curl localhost:3000/merchants/1/supplies
 ```
 
 ### view monthly statement. 
