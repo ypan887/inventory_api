@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ypan887/inventoy_api.svg?branch=master)](https://travis-ci.org/ypan887/inventoy_api)
+[![Build Status](https://travis-ci.org/ypan887/inventory_api.svg?branch=master)](https://travis-ci.org/ypan887/inventoy_api)
 [![Coverage Status](https://coveralls.io/repos/github/ypan887/inventoy_api/badge.svg?branch=master)](https://coveralls.io/github/ypan887/inventoy_api?branch=master)
 
 # Inventory Management Api
