@@ -1,5 +1,10 @@
 class CategoriesController < ApplicationController
 
+  def index
+    categoris = Category.all
+    render json: categoris
+  end
+
   def create
     category = Category.new(category_params)
     if category.save
