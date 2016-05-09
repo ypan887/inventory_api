@@ -9,6 +9,7 @@ class Product < ActiveRecord::Base
   validates :price, presence: true
   validates :cost, presence: true
   validates :name, presence: true
+  validates :name, uniqueness: { case_sensitive: false }
 
   after_update :update_product_cost_and_profit
   after_update :update_income_and_profit

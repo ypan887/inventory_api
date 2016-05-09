@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :category do
-    name "Luxuary"
-    description "Top Luxuary brand items"
+    name { Faker::Commerce.department }
+    description { Faker::Lorem.sentence }
   end
 end

@@ -4,7 +4,7 @@ describe 'statements', type: :request do
   describe "index" do
     before :each do
       @product_1 = FactoryGirl.create(:product)
-      product_2 = FactoryGirl.create(:product, name: "MyString", price: 20, cost: 10)
+      product_2 = FactoryGirl.create(:product, name: Faker::Commerce.product_name, price: 20, cost: 10)
       @order1 = FactoryGirl.create(:order, :order_details_attributes => [{ :quantity => 1, :product_id => @product_1.id },{:quantity => 1, :product_id => product_2.id}])
       order2 = FactoryGirl.create(:order, order_date: "2016-04-06", :order_details_attributes => [{ :quantity => 1, :product_id => product_2.id }])
       @shipment1 = FactoryGirl.create(:shipment, ship_cost: 9, :shipment_details_attributes => [{ :quantity => 1, :product_id => @product_1.id },{ :quantity => 1, :product_id => product_2.id }])
