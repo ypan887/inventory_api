@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
     if customer.save
       render json: customer, status: 201
     else
-      render json: { errors: customer.errors }, status: 422
+      render json: { errors: customer.errors.full_messages }, status: 422
     end
   end
 
@@ -14,7 +14,7 @@ class CustomersController < ApplicationController
     if customer.update(customer_params)
       render json: customer, status: 200
     else
-      render json: { errors: customer.errors }, status: 422
+      render json: { errors: customer.errors.full_messages }, status: 422
     end
   end
 

@@ -5,7 +5,7 @@ class ShipmentsController < ApplicationController
     if shipment.save
       render json: shipment, status: 201
     else
-      render json: { errors: shipment.errors }, status: 422
+      render json: { errors: shipment.errors.full_messages }, status: 422
     end
   end
 
@@ -15,7 +15,7 @@ class ShipmentsController < ApplicationController
     if shipment.update(shipment_params)
       render json: shipment, status: 200
     else
-      render json: { errors: shipment.errors }, status: 422
+      render json: { errors: shipment.errors.full_messages }, status: 422
     end
   end
 

@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
     if order.save
       render json: order, status: 201
     else
-      render json: { errors: order.errors }, status: 422
+      render json: { errors: order.errors.full_messages }, status: 422
     end
   end
 
@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     if order.update(order_params)
       render json: order, status: 200
     else
-      render json: { errors: order.errors }, status: 422
+      render json: { errors: order.errors.full_messages }, status: 422
     end
   end
 

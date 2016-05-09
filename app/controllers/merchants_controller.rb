@@ -5,7 +5,7 @@ class MerchantsController < ApplicationController
     if merchant.save
       render json: merchant, status: 201
     else
-      render json: { errors: merchant.errors }, status: 422
+      render json: { errors: merchant.errors.full_messages }, status: 422
     end
   end
 
@@ -15,7 +15,7 @@ class MerchantsController < ApplicationController
     if merchant.update(merchant_params)
       render json: merchant, status: 200
     else
-      render json: { errors: merchant.errors }, status: 422
+      render json: { errors: merchant.errors.full_messages }, status: 422
     end
   end
 

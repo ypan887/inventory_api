@@ -6,7 +6,7 @@ class SuppliesController < ApplicationController
     if supply.save
       render json: supply, status: 201
     else
-      render json: { errors: supply.errors }, status: 422
+      render json: { errors: supply.errors.full_messages }, status: 422
     end
   end
 
@@ -16,7 +16,7 @@ class SuppliesController < ApplicationController
     if supply.update(supply_params)
       render json: supply, status: 200
     else
-      render json: { errors: supply.errors }, status: 422
+      render json: { errors: supply.errors.full_messages }, status: 422
     end
   end
 

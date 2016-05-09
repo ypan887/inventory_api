@@ -47,7 +47,7 @@ describe 'customers', type: :request do
       post '/customers', { country: "USA"}, format: :json
       expect(response.status).to eq(422)
       body = json_response
-      expect(body['errors']).to eq("name" => ["can't be blank"])
+      expect(body['errors']).to eq(["Name can't be blank"])
     end
   end
 

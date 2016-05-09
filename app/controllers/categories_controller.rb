@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
     if category.save
       render json: category, status: 201
     else
-      render json: { errors: category.errors }, status: 422
+      render json: { errors: category.errors.full_messages }, status: 422
     end
   end
 
@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
     if category.update(category_params)
       render json: category, status: 200
     else
-      render json: { errors: category.errors }, status: 422
+      render json: { errors: category.errors.full_messages }, status: 422
     end
   end
 
