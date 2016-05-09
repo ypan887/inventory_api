@@ -21,6 +21,23 @@ describe 'categories', type: :request do
     end
   end
 
+  describe 'show' do
+    let(:category) { FactoryGirl.create(:category)}
+
+    before :each do
+      get "/categories/#{category.id}"
+    end
+
+    it 'should have an endpoint' do
+      expect(response).to be_success
+    end
+
+    it 'should return the correct customer' do
+      body = json_response
+      expect(body['data']['id'].to_i).to eq(category.id)
+    end
+  end
+
   describe 'create' do
     it 'should create category with name' do
       post '/categories', { name: "electronic", description: "regular electronic items" }, format: :json
