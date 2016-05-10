@@ -1,11 +1,16 @@
 [![Build Status](https://travis-ci.org/ypan887/inventory_api.svg?branch=master)](https://travis-ci.org/ypan887/inventoy_api)
 [![Coverage Status](https://coveralls.io/repos/github/ypan887/inventoy_api/badge.svg?branch=master)](https://coveralls.io/github/ypan887/inventoy_api?branch=master)
 
-# Inventory Management Api
+# Introduction
 
 I am building a tool for my wife who is in need of an easy-to-use solution for managing her small oversea trading business.
 
 This is solution version 3.0 and it will have two parts, an inventory api and a front end app to cosume that api. This new setup was inspired by a group project that I was currently working on. I am aiming for a better overall performance than the previous version.
+
+# The client front end and the api demo
+
+You can visit the demo client app [here](https://inv-client.herokuapp.com/)
+Or visit the demo api [here](52.37.73.85/)
 
 ## Installation
 
@@ -13,9 +18,17 @@ This is solution version 3.0 and it will have two parts, an inventory api and a 
 bundle install
 bundle exec rake db:create
 bundle exec rake db:migrate
-bundle exec rake db:setup  # Only if you want to play around with seeded data to see how everything is working in this api
+bundle exec rake db:seed  # Only if you want to play around with seeded data to see how everything is working in this api
 rails s
 ```
+
+You can verify if the api is setup correctly by 
+
+```
+    curl localhost:3000/
+```
+
+You should see a response with welcome messages
 
 ## Features
 This api serves as a tool to keep an record on the products inventory. That includes all the information on custermers and their orders, products with categories, shipments of products, and supplies of product inventory.
