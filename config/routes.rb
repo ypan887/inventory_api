@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :update, :destroy]
   resources :supplies, only: [:show, :update, :destroy]
   resources :products, only: [:show, :update, :destroy]
+  root to: "main#index"
 end
