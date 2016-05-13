@@ -10,7 +10,7 @@ This is solution version 3.0 and it will have two parts, an inventory api and a 
 # The client front end and the api demo
 
 You can visit the demo client app [here](https://inv-client.herokuapp.com/)
-Or visit the demo api [here](52.37.73.85/)
+Or visit the demo api [here](http://52.37.73.85/)
 
 ## Installation
 
