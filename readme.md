@@ -3,11 +3,9 @@
 
 # Introduction
 
-I am building a tool for my wife who is in need of an easy-to-use solution for managing her small oversea trading business.
+I write this app becasue my wife needs an easy-to-use solution to help manage her small oversea trading business. The solution has two parts, an api and a front end app that consumes the api. 
 
-This is solution version 3.0 and it will have two parts, an inventory api and a front end app to cosume that api. This new setup was inspired by a group project that I was currently working on. I am aiming for a better overall performance than the previous version.
-
-# The client front end and the api demo
+# The demos
 
 You can visit the demo client app [here](https://inv-client.herokuapp.com/)
 Or visit the demo api [here](http://52.37.73.85/)
@@ -31,39 +29,40 @@ You can verify if the api is setup correctly by
 You should see a response with welcome messages
 
 ## Features
-This api serves as a tool to keep an record on the products inventory. That includes all the information on custermers and their orders, products with categories, shipments of products, and supplies of product inventory.
+You can use this api to keep a record on your product inventory, which includes all the information on products and its categories, custermers and their orders, shipments of products, and supplies of products.
 
 ## Examples
 
 If you choose to seed the database, you can start explore the api
 
-#### view categories and the products
+#### view all products or the products under specific category
 ```
-curl localhost:3000/categoris
-curl localhost:3000/category/1/products
+curl localhost:3000/categories
+curl localhost:3000/categories/1/products
 ```
 
-#### view customers, and their orders
-
+#### view list of customers, or order history of each customer
 ```
 curl localhost:3000/customers
 curl localhost:3000/customers/1/orders
 ```
 
-### view supplier merchants, and their supply records
+### view list of supplier merchants, or supply records of each merchant
 ```
 curl localhost:3000/merchants
 curl localhost:3000/merchants/1/supplies
 ```
 
-### view monthly statement. 
-Statement will be updated whenever the relative sales information for that month was changed. For example, if quantity of items in an order made on Apr-12-2016 has changed, the income statement for that month will be recalculated and updated number will be saved. If the price or cost of a product has changed, every monthly statements that happens after the created date of the product will be updated as well.
+### view monthly statements. 
+Statement will be updated whenever the related sales information for that month changes. For example, if the quantity of an item in an order made on Apr-12-2016 changed, the income statement for that month will be recalculated and updated in database. However, if changes is on the product itself, like the price or cost of a product, the api will only query and update monthly statements that may be affected by the change of information.
 
 ```
 curl localhost:3000/statements
 ```
 
-you can also modify your sales record like this:
+
+### post or update to api
+you can modify your sales record like this:
 ```
 curl -v -H "Content-Type: application/json" -X PATCH http://localhost:3000/shipments/1 -d '{ "ship_cost": "20" }'
 
