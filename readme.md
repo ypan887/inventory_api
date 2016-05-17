@@ -3,7 +3,7 @@
 
 # Introduction
 
-I write this app becasue my wife needs an easy-to-use solution to help manage her small oversea trading business. The solution has two parts, an api and a front end app that consumes the api. 
+I write this app because my wife needs an easy-to-use solution to help manage her small oversea trading business. The solution has two parts, an api and a front end app that consumes the api. 
 
 # The demos
 
@@ -29,16 +29,18 @@ You can verify if the api is setup correctly by
 You should see a response with welcome messages
 
 ## Features
-You can use this api to keep a record on your product inventory, which includes all the information on products and its categories, custermers and their orders, shipments of products, and supplies of products.
+You can use this api to keep track of your product inventory, which includes all the information on products and its categories, customers and their orders, shipments of products, and supplies of products.
 
 ## Examples
 
-If you choose to seed the database, you can start explore the api
-
-#### view all products or the products under specific category
+#### view all products or the products under each category
 ```
 curl localhost:3000/categories
 curl localhost:3000/categories/1/products
+
+# The resources are shallow nested. So to get, update or destroy a particular product, you don't need to know the category it belongs to.
+
+curl localhost:3000/products/1
 ```
 
 #### view list of customers, or order history of each customer
@@ -53,8 +55,9 @@ curl localhost:3000/merchants
 curl localhost:3000/merchants/1/supplies
 ```
 
+
 ### view monthly statements. 
-Statement will be updated whenever the related sales information for that month changes. For example, if the quantity of an item in an order made on Apr-12-2016 changed, the income statement for that month will be recalculated and updated in database. However, if changes is on the product itself, like the price or cost of a product, the api will only query and update monthly statements that may be affected by the change of information.
+Monthly statements will remain empty until there are any sales records for that month. If sales records are modified, the correspondent monthly statement will be updated as well. For example, if the quantity of a product in an order made on Apr-12-2016 is changed, the monthly statement for apr-2016 will be recalculated and updated in database. However, if changes are made on the attributes of the product itself, like the price or cost of a product, the api will only query and update monthly statements that may be affected by the change of such information.
 
 ```
 curl localhost:3000/statements
